@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/Context";
 
 const Register = () => {
   const navigate = useNavigate()
-  const { createUserEmailAndPassword } = useContext(AuthContext);
+  const { createUserEmailAndPassword,googleLogin } = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -16,10 +16,14 @@ const Register = () => {
     createUserEmailAndPassword(email, password)
     .then(result => {
       navigate('/home')
-
-
     }).catch(error=>console.error(error))
   };
+
+  const handleGoogleSignIn = ()=>{
+    googleLogin().then(result =>{
+      
+    }).catch(error => console.error(error))
+  }
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -78,7 +82,7 @@ const Register = () => {
                   <Link to="/login">Login Here</Link>
                 </button>
               </p>
-              <div className="flex justify-center items-center cursor-pointer border bg-teal-400rounded-full pl-4">
+              <div onClick={handleGoogleSignIn} className="flex justify-center items-center cursor-pointer border bg-teal-400rounded-full pl-4">
                 <img className="w-12 " src={GoogleSvg} alt="" />
                 <p className="px-4">continue with google</p>
               </div>

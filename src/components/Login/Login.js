@@ -1,17 +1,29 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import GoogleSvg from '../../Assets/svg/icons8-google.svg'
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import GoogleSvg from "../../Assets/svg/icons8-google.svg";
+import { AuthContext } from "../../context/Context";
 
 const Login = () => {
+  const { loginUserWithEmailAndPassword ,googleLogin} = useContext(AuthContext);
+  const { register, handleSubmit } = useForm();
 
-  const {register, handleSubmit} = useForm()
+  const onSubmit = (data) => {
+    const { email, password } = data;
 
-  const onSubmit = (data) =>{
-    console.log(data);
+    loginUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => console.error(error));
+  };
+  const handleGoogleSignIn = ()=>{
+    googleLogin().then(result =>{
+      
+    }).catch(error => console.error(error))
   }
-    return (
-      <div>
+  return (
+    <div>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
@@ -27,7 +39,7 @@ const Login = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                {...register ("email")}
+                  {...register("email")}
                   type="text"
                   name="email"
                   placeholder="email"
@@ -39,7 +51,7 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                {...register ('password')}
+                  {...register("password")}
                   type="text"
                   name="password"
                   placeholder="password"
@@ -62,8 +74,8 @@ const Login = () => {
                 </button>
               </p>
               <div
+              onClick={handleGoogleSignIn}
                 id="login-id"
-                
                 className="flex justify-center items-center border cursor-pointer bg-emerald-200 rounded-full"
               >
                 <img className="w-12 " src={GoogleSvg} alt="" />
@@ -74,7 +86,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Login;
