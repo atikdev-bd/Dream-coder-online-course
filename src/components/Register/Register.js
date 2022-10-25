@@ -1,12 +1,14 @@
 import { Result } from "postcss";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleSvg from "../../Assets/svg/icons8-google.svg";
 import { AuthContext } from "../../context/Context";
 
 const Register = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
   const { createUserEmailAndPassword,googleLogin } = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm();
@@ -15,12 +17,13 @@ const Register = () => {
 
     createUserEmailAndPassword(email, password)
     .then(result => {
-      navigate('/home')
+      navigate(from, {replace: true})
     }).catch(error=>console.error(error))
   };
 
   const handleGoogleSignIn = ()=>{
     googleLogin().then(result =>{
+      navigate(from, {replace: true})
       
     }).catch(error => console.error(error))
   }

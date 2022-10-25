@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import GoogleSvg from "../../Assets/svg/icons8-google.svg";
 import { AuthContext } from "../../context/Context";
 
 const Login = () => {
+  const navigate = useNavigate()
+
+  const location = useLocation()
+
+  const from = location.state?.from?.pathname || '/'
+
   const { loginUserWithEmailAndPassword ,googleLogin} = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
 
@@ -14,11 +20,13 @@ const Login = () => {
     loginUserWithEmailAndPassword(email, password)
       .then((result) => {
         console.log(result.user);
+        navigate(from, {replace : true})
       })
       .catch((error) => console.error(error));
   };
   const handleGoogleSignIn = ()=>{
     googleLogin().then(result =>{
+      navigate(from, {replace : true})
       
     }).catch(error => console.error(error))
   }
