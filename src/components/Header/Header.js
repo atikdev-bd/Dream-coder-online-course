@@ -5,7 +5,13 @@ import ProfileIcon from "../../Assets/icon/profileIcon.png";
 import { AuthContext } from "../../context/Context";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user,logOut } = useContext(AuthContext);
+
+  const userSignOut = ()=>{
+    logOut().then(result =>{
+
+    }).catch(error => console.error(error))
+  }
   console.log(user);
   return (
     <div className="navbar bg-base-300 px-8">
@@ -28,9 +34,9 @@ const Header = () => {
               <Link className="mr-4 font-bold" to="about">
                 About
               </Link>
-             <Link to='/home'>
+             <Link title="Click to sign out" to='/home'>
                 {" "}
-                <FaSignOutAlt className="text-gray-900 ml-2 hover:text-red-500"></FaSignOutAlt>{" "}
+                <FaSignOutAlt onClick={userSignOut}  className="text-gray-900 ml-2 hover:text-red-500"></FaSignOutAlt>{" "}
               </Link>
             </div>
           ) : (
@@ -56,11 +62,11 @@ const Header = () => {
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div
-              title={user.displayName ? user.displayName : "No name found"}
+              title={user?.displayName ? user?.displayName : "No name found"}
               className="w-10 rounded-full"
             >
               {user && user?.photoURL ? (
-                <img src={user.photoURL} alt="" />
+                <img src={user?.photoURL} alt="" />
               ) : (
                 <img src={ProfileIcon} alt="" />
               )}
