@@ -5,7 +5,7 @@ import GoogleSvg from '../../Assets/svg/icons8-google.svg'
 
 const Login = () => {
 
-  const {login, handleSubmit} = useForm()
+  const {register, handleSubmit} = useForm()
 
   const onSubmit = (data) =>{
     console.log(data);
@@ -27,7 +27,7 @@ const Login = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                {...login ('email')}
+                {...register ("email")}
                   type="text"
                   name="email"
                   placeholder="email"
@@ -39,7 +39,7 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                {...login ('password')}
+                {...register ('password')}
                   type="text"
                   name="password"
                   placeholder="password"
@@ -63,7 +63,7 @@ const Login = () => {
               </p>
               <div
                 id="login-id"
-                onClick={''}
+                
                 className="flex justify-center items-center border cursor-pointer bg-emerald-200 rounded-full"
               >
                 <img className="w-12 " src={GoogleSvg} alt="" />
