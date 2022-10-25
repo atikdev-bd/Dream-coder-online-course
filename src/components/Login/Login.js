@@ -1,8 +1,15 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import GoogleSvg from '../../Assets/svg/icons8-google.svg'
 
 const Login = () => {
+
+  const {login, handleSubmit} = useForm()
+
+  const onSubmit = (data) =>{
+    console.log(data);
+  }
     return (
       <div>
       <div className="hero min-h-screen bg-base-200">
@@ -11,7 +18,7 @@ const Login = () => {
             <h1 className="text-5xl font-bold">Login now!</h1>
           </div>
           <form
-            onSubmit={''}
+            onSubmit={handleSubmit(onSubmit)}
             className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
           >
             <div className="card-body">
@@ -20,6 +27,7 @@ const Login = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                {...login ('email')}
                   type="text"
                   name="email"
                   placeholder="email"
@@ -31,6 +39,7 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                {...login ('password')}
                   type="text"
                   name="password"
                   placeholder="password"

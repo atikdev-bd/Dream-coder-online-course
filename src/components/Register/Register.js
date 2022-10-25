@@ -1,38 +1,93 @@
-import React from 'react';
+import { Result } from "postcss";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import GoogleSvg from "../../Assets/svg/icons8-google.svg";
+import { AuthContext } from "../../context/Context";
 
 const Register = () => {
-    return (
-        <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+  const navigate = useNavigate()
+  const { createUserEmailAndPassword } = useContext(AuthContext);
+
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    const { email, name, password } = data;
+
+    createUserEmailAndPassword(email, password)
+    .then(result => {
+      navigate('/home')
+
+
+    }).catch(error=>console.error(error))
+  };
+  return (
+    <div>
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <h1 className="text-5xl font-bold">Pleaser Register !</h1>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
+          >
             <div className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  {...register("name")}
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  className="input input-bordered"
+                />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="text" placeholder="email" className="input input-bordered" />
+                <input
+                  {...register("email")}
+                  type="text"
+                  name="email"
+                  placeholder="email"
+                  className="input input-bordered"
+                />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="text" placeholder="password" className="input input-bordered" />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
+                <input
+                  {...register("password")}
+                  type="text"
+                  name="password"
+                  placeholder="password"
+                  className="input input-bordered"
+                />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary">Register</button>
+              </div>
+              <p>
+                Already have an account :{" "}
+                <button className="btn text-emerald-500 btn-active btn-link">
+                  {" "}
+                  <Link to="/login">Login Here</Link>
+                </button>
+              </p>
+              <div className="flex justify-center items-center cursor-pointer border bg-teal-400rounded-full pl-4">
+                <img className="w-12 " src={GoogleSvg} alt="" />
+                <p className="px-4">continue with google</p>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default Register;
