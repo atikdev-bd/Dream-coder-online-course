@@ -12,7 +12,6 @@ const Header = () => {
 
     }).catch(error => console.error(error))
   }
-  console.log(user);
   return (
     <div className="navbar bg-base-300 px-8">
       <div className="flex-1">
