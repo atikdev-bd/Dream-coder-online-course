@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/Context";
 
 const Header = () => {
+  const {user} = useContext(AuthContext)
   return (
     <div className="navbar bg-base-300 px-8">
       <div className="flex-1">
         <Link className="btn  btn-ghost normal-case text-xl">DREAM COURSES</Link>
+        <p>{user?.email}</p>
       </div>
       <div className="flex-none">
       <div className="mr-8">
+        
         <Link className="mr-4 font-bold" to='home'>Home</Link>
         <Link className="mr-4 font-bold" to='blog'>Blog</Link>
         <Link className="mr-4 font-bold" to='about'>About</Link>
