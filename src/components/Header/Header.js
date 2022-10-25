@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useTransition } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/Context";
+import ProfileIcon from '../../Assets/icon/profileIcon.png'
 
 const Header = () => {
   const {user} = useContext(AuthContext)
+  console.log(user)
   return (
     <div className="navbar bg-base-300 px-8">
       <div className="flex-1">
@@ -21,8 +23,11 @@ const Header = () => {
       </div>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people"alt=""/>
+            <div title={user.displayName ? user.displayName : 'No name found'} className="w-10 rounded-full">
+
+              {
+                user && user?.photoURL ? <img src={user.photoURL}alt=""/> : <img src={ProfileIcon}alt=""/>
+              }
             </div>
           </label>
           <ul
