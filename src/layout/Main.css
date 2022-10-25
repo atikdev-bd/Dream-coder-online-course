@@ -1,4 +1,4 @@
 .row-container{
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 6fr 2fr;
 }
