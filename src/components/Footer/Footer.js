@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster } from "react-hot-toast";
 
 const Footer = () => {
   return (
@@ -43,6 +44,7 @@ const Footer = () => {
           <a className="link link-hover">Cookie policy</a>
         </div>
       </footer>
+      <Toaster></Toaster>
     </div>
   );
 };

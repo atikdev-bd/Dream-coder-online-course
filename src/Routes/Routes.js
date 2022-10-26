@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
+import Blogs from "../components/Blogs/Blogs";
 import CheckOut from "../components/CheckOut/CheckOut";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
 import Home from "../components/Home/Home";
 import LandPage from "../components/LandPage/LandPage";
 import Login from "../components/Login/Login";
+import NotFoundPage from "../components/NotFoundPage/NotFoundPage";
 import Register from "../components/Register/Register";
 import Main from "../layout/Main";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -12,6 +14,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement : <NotFoundPage></NotFoundPage>,
     children: [
       {
         path: "/",
@@ -48,7 +51,12 @@ export const router = createBrowserRouter([
           const data = fetch(`http://localhost:4000/check/${id}`);
           return data;
         },
+        
       },
+      {
+        path : '/blogs',
+        element : <Blogs></Blogs>
+      }
     ],
   },
 ]);

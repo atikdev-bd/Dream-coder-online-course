@@ -1,42 +1,46 @@
-import React, { useContext,  } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Github from "../../Assets/svg/icons8-github.svg";
 import GoogleSvg from "../../Assets/svg/icons8-google.svg";
 import { AuthContext } from "../../context/Context";
 
 const Login = () => {
-  
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const location = useLocation()
+  const location = useLocation();
 
-  const from = location.state?.from?.pathname || '/'
+  const from = location.state?.from?.pathname || "/";
 
-  const { loginUserWithEmailAndPassword ,googleLogin} = useContext(AuthContext);
+  const { loginUserWithEmailAndPassword, googleLogin } =
+    useContext(AuthContext);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     const { email, password } = data;
-    
 
     loginUserWithEmailAndPassword(email, password)
       .then((result) => {
         console.log(result.user);
-        
-        navigate(from, {replace : true})
-        toast('login successfully')
-        
+
+        navigate(from, { replace: true });
+        toast("login successfully!");
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        const err = error?.message;
+        toast.error(err);
+        console.log(err);
+      });
   };
-  const handleGoogleSignIn = ()=>{
-    googleLogin().then(result =>{
-      navigate(from, {replace : true})
-      toast('login successfully')
-      
-    }).catch(error => console.error(error))
-  }
+  const handleGoogleSignIn = () => {
+    googleLogin()
+      .then((result) => {
+        navigate(from, { replace: true });
+        toast.success("login successfully");
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -63,7 +67,6 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-              
                   <span className="label-text">Password</span>
                 </label>
                 <input
@@ -90,18 +93,25 @@ const Login = () => {
                 </button>
               </p>
               <div
-              onClick={handleGoogleSignIn}
+                onClick={handleGoogleSignIn}
                 id="login-id"
-                className="flex justify-center items-center border cursor-pointer bg-emerald-200 rounded-full"
+                className="flex justify-center items-center border cursor-pointer bg-emerald-200 hover:bg-emerald-300  rounded-full"
               >
                 <img className="w-12 " src={GoogleSvg} alt="" />
                 <p className="px-4">continue with google</p>
-                <ToastContainer></ToastContainer>
+              </div>
+              <div
+                onClick={handleGoogleSignIn}
+                className="flex justify-center items-center cursor-pointer border bg-gray-300 hover:bg-gray-400 rounded-full pl-4"
+              >
+                <img className="w-12 " src={Github} alt="" />
+                <p className="px-4">continue with Github</p>
               </div>
             </div>
           </form>
         </div>
       </div>
+      <Toaster></Toaster>
     </div>
   );
 };

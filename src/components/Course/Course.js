@@ -10,16 +10,18 @@ const Course = ({ info }) => {
     <div className="">
       <div className=" glass shadow-lg rounded-t-md">
         <figure>
-          <img className="w-full h-60 rounded-t-md" src={img} alt="" />
+         <div className="bg-zinc-400 rounded-md">
+         <img className="w-full h-60 p-2  rounded-lg" src={img} alt="" />
+         </div>
         </figure>
-        <div className="h-[150px] bg-stone-300">
+        <div className="h-[150px] bg-stone-300 rounded-md">
           <div className="">
             <div className="flex justify-between px-4">
               <div>
-              <h2 className="card  text-xl mt-2  py-1 px-3  text-slate-800">{name}</h2>
+              <h2 className="card bg-green-200   mt-2  py-1 px-3  text-green-700">{name}</h2>
               </div>
               <div>
-              <p className=" text-black text-xl font-bold  mt-2">$ {price}</p>
+              <p className=" text-green-700 text-xl font-bold  mt-2">$ {price}</p>
               </div>
             </div>
             <div className="">

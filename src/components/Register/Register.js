@@ -1,36 +1,37 @@
-
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
 import GoogleSvg from "../../Assets/svg/icons8-google.svg";
+import Github from '../../Assets/svg/icons8-github.svg'
 import { AuthContext } from "../../context/Context";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
-  const { createUserEmailAndPassword,googleLogin,setError,loading } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const { createUserEmailAndPassword, googleLogin, setError, loading } =
+    useContext(AuthContext);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     const { email, name, password } = data;
 
     createUserEmailAndPassword(email, password)
-    .then(result => {
-      toast.success(' Login successfully ')
-      navigate(from, {replace: true})
-    }).catch(error=>toast.error(error))
+      .then((result) => {
+        toast.success(" Login successfully ");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => toast.error(error));
   };
-  
-  const handleGoogleSignIn = ()=>{
-    googleLogin().then(result =>{
-      loading(true)
-      navigate(from, {replace: true})
 
-    }).catch(error => toast.error(error))
-    
-  }
+  const handleGoogleSignIn = () => {
+    googleLogin()
+      .then((result) => {
+        loading(true);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => toast.error(error));
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -38,7 +39,7 @@ const Register = () => {
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Pleaser Register !</h1>
           </div>
-         
+
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
@@ -52,7 +53,19 @@ const Register = () => {
                   {...register("name")}
                   type="text"
                   name="name"
-                  placeholder="name"
+                  placeholder="full name"
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo url</span>
+                </label>
+                <input
+                  {...register("photo url")}
+                  type="text"
+                  name="Photo Url"
+                  placeholder="photo url"
                   className="input input-bordered"
                 />
               </div>
@@ -90,12 +103,22 @@ const Register = () => {
                   <Link to="/login">Login Here</Link>
                 </button>
               </p>
-              <div onClick={handleGoogleSignIn} className="flex justify-center items-center cursor-pointer border bg-teal-400rounded-full pl-4">
-                <img  className="w-12 " src={GoogleSvg} alt="" />
+              <div
+                onClick={handleGoogleSignIn}
+                className="flex justify-center items-center cursor-pointer border bg-emerald-200 hover:bg-emerald-300 rounded-full pl-4"
+              >
+                <img className="w-12 " src={GoogleSvg} alt="" />
                 <p className="px-4">continue with google</p>
-                <ToastContainer></ToastContainer>
+                
               </div>
-              
+              <div
+                onClick={handleGoogleSignIn}
+                className="flex justify-center items-center cursor-pointer border bg-gray-300 hover:bg-gray-400 rounded-full pl-4"
+              >
+                <img className="w-12 " src={Github} alt="" />
+                <p className="px-4">continue with Github</p>
+                
+              </div>
             </div>
           </form>
         </div>
