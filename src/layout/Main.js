@@ -13,10 +13,7 @@ const Main = () => {
       <div className="row-container">
         <div>
           <Outlet></Outlet>
-        </div>
-         <div className="">
-          {/* <RightSideNav></RightSideNav> */}
-         </div> 
+        </div> 
       </div>
       <Footer></Footer>
     </>
