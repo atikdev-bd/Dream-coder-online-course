@@ -9,7 +9,7 @@ const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const { createUserEmailAndPassword, googleLogin, githubLogin, setError, loading } =
+  const { createUserEmailAndPassword, googleLogin, githubLogin, loading } =
     useContext(AuthContext);
 
   const { register, handleSubmit } = useForm();
@@ -27,13 +27,15 @@ const Register = () => {
   const handleGoogleSignIn = () => {
     googleLogin()
       .then((result) => {
-        loading(true);
+        
         navigate(from, { replace: true });
       })
       .catch((error) => toast.error(error));
   };
   const handleGithub =()=>{
     githubLogin().then(result =>{
+
+      navigate(from, { replace: true });
 
     }).catch(error => console.error(error))
  }
@@ -117,7 +119,7 @@ const Register = () => {
                 
               </div>
               <div
-                onClick={handleGithub }
+                onClick={handleGithub}
                 className="flex justify-center items-center cursor-pointer border bg-gray-300 hover:bg-gray-400 rounded-full pl-4"
               >
                 <img className="w-12 " src={Github} alt="" />
