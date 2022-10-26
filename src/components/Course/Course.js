@@ -1,5 +1,6 @@
 import Lottie from "lottie-react";
 import React from "react";
+import './Course.css'
 
 import Laptop from "../../Assets/laptop.json";
 
@@ -11,14 +12,18 @@ const Course = ({ info }) => {
         <figure>
           <img className="w-full h-60 rounded-t-md" src={img} alt="" />
         </figure>
-        <div className="card-body h-[150px] bg-base-500">
-          <div className="flex">
-            <div>
-              <Lottie className="w-50 h-20" animationData={Laptop}></Lottie>
+        <div className="h-[150px] bg-stone-300">
+          <div className="">
+            <div className="flex justify-between px-4">
+              <div>
+              <h2 className="card  text-xl mt-2  py-1 px-3  text-slate-800">{name}</h2>
+              </div>
+              <div>
+              <p className=" text-black text-xl font-bold  mt-2">$ {price}</p>
+              </div>
             </div>
-            <div>
-              <h2 className="card-title mb-2 text-white">{name}</h2>
-              <p className="text-white">$ {price}</p>
+            <div className="">
+              <Lottie className=" h-28" animationData={Laptop}></Lottie>
             </div>
           </div>
         </div>

@@ -14,9 +14,9 @@ const Main = () => {
         <div>
           <Outlet></Outlet>
         </div>
-        <div className="">
-          <RightSideNav></RightSideNav>
-        </div>
+         <div className="">
+          {/* <RightSideNav></RightSideNav> */}
+         </div> 
       </div>
       <Footer></Footer>
     </>

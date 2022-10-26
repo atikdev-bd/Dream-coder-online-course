@@ -24,6 +24,7 @@ const Context = ({ children }) => {
 
   const [user, setUser] = useState('')
   const [loading, setLoading] = useState(true)
+  const [error , setError] = useState('')
 
   /// create user with email and password //
   const createUserEmailAndPassword = (email, password) => {
@@ -67,7 +68,8 @@ const Context = ({ children }) => {
     googleLogin,
     user,
     logOut,
-    loading
+    loading,
+    setError
     
   };
 

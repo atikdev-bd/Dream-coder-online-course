@@ -1,15 +1,16 @@
-import { Result } from "postcss";
+
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleSvg from "../../Assets/svg/icons8-google.svg";
 import { AuthContext } from "../../context/Context";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
-  const { createUserEmailAndPassword,googleLogin } = useContext(AuthContext);
+  const { createUserEmailAndPassword,googleLogin,setError,loading } = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -17,15 +18,18 @@ const Register = () => {
 
     createUserEmailAndPassword(email, password)
     .then(result => {
+      toast.success(' Login successfully ')
       navigate(from, {replace: true})
-    }).catch(error=>console.error(error))
+    }).catch(error=>toast.error(error))
   };
-
+  
   const handleGoogleSignIn = ()=>{
     googleLogin().then(result =>{
+      loading(true)
       navigate(from, {replace: true})
-      
-    }).catch(error => console.error(error))
+
+    }).catch(error => toast.error(error))
+    
   }
   return (
     <div>
@@ -34,6 +38,7 @@ const Register = () => {
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Pleaser Register !</h1>
           </div>
+         
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
@@ -86,9 +91,11 @@ const Register = () => {
                 </button>
               </p>
               <div onClick={handleGoogleSignIn} className="flex justify-center items-center cursor-pointer border bg-teal-400rounded-full pl-4">
-                <img className="w-12 " src={GoogleSvg} alt="" />
+                <img  className="w-12 " src={GoogleSvg} alt="" />
                 <p className="px-4">continue with google</p>
+                <ToastContainer></ToastContainer>
               </div>
+              
             </div>
           </form>
         </div>

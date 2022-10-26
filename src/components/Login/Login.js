@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext,  } from "react";
 import { useForm } from "react-hook-form";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import GoogleSvg from "../../Assets/svg/icons8-google.svg";
 import { AuthContext } from "../../context/Context";
 
 const Login = () => {
+  
   const navigate = useNavigate()
 
   const location = useLocation()
@@ -16,17 +18,22 @@ const Login = () => {
 
   const onSubmit = (data) => {
     const { email, password } = data;
+    
 
     loginUserWithEmailAndPassword(email, password)
       .then((result) => {
         console.log(result.user);
+        
         navigate(from, {replace : true})
+        toast('login successfully')
+        
       })
       .catch((error) => console.error(error));
   };
   const handleGoogleSignIn = ()=>{
     googleLogin().then(result =>{
       navigate(from, {replace : true})
+      toast('login successfully')
       
     }).catch(error => console.error(error))
   }
@@ -56,6 +63,7 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
+              
                   <span className="label-text">Password</span>
                 </label>
                 <input
@@ -88,6 +96,7 @@ const Login = () => {
               >
                 <img className="w-12 " src={GoogleSvg} alt="" />
                 <p className="px-4">continue with google</p>
+                <ToastContainer></ToastContainer>
               </div>
             </div>
           </form>

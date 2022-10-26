@@ -1,3 +1,8 @@
 .title{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+.courses-container{
+    display: grid;
+    grid-template-columns: 6fr 2fr;
+}

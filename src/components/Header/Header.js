@@ -2,30 +2,35 @@ import React, { useContext } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ProfileIcon from "../../Assets/icon/profileIcon.png";
+import TitleIcon from '../../Assets/icon/icons8-programming-flag-50.png'
 import { AuthContext } from "../../context/Context";
+import './Header.css'
 
 const Header = () => {
-  const { user,logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  const userSignOut = ()=>{
-    logOut().then(result =>{
-
-    }).catch(error => console.error(error))
-  }
+  const userSignOut = () => {
+    logOut()
+      .then((result) => {})
+      .catch((error) => console.error(error));
+  };
   return (
     <div className="navbar bg-base-300 px-8">
       <div className="flex-1">
-        <Link className="btn  btn-ghost normal-case text-xl">
+        <img src={TitleIcon} alt="" />
+        <Link className="text-xl font-bold ml-2 hover:text-emerald-600">
           DREAM COURSES
         </Link>
-        <p>{user?.email}</p>
+        <input  type="checkbox" className="toggle" checked />
       </div>
-      <div className="flex-none">
-        <div className="mr-8">
+      <div className="header-container">
+        <div className="mr-8 flex items-center ">
+        
           {user && user?.uid ? (
             <div className="flex items-center">
+              
               <Link className="mr-4 font-bold" to="home">
-                Home
+                Courses
               </Link>
               <Link className="mr-4 font-bold" to="blog">
                 Blog
@@ -33,9 +38,12 @@ const Header = () => {
               <Link className="mr-4 font-bold" to="about">
                 About
               </Link>
-             <Link title="Click to sign out" to='/home'>
+              <Link title="Click to sign out" to="/home">
                 {" "}
-                <FaSignOutAlt onClick={userSignOut}  className="text-gray-900 ml-2 hover:text-red-500"></FaSignOutAlt>{" "}
+                <FaSignOutAlt
+                  onClick={userSignOut}
+                  className="text-gray-900 ml-2 hover:text-red-500"
+                ></FaSignOutAlt>{" "}
               </Link>
             </div>
           ) : (
