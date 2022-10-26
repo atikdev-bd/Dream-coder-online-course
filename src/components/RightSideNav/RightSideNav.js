@@ -25,7 +25,7 @@ const RightSideNav = () => {
           <p className="mt-6" key={d.id}>
             <button className="border rounded-full px-4 py-1 bg-green-200 hover:bg-green-500">
               {d.name}{" "}
-              <FaAngleDoubleRight className="inline text-cyan-900 items-center"></FaAngleDoubleRight>
+             
             </button>
           </p>
         </Link>
