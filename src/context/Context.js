@@ -2,6 +2,7 @@ import { current } from "daisyui/src/colors";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -21,6 +22,7 @@ const Context = ({ children }) => {
    
 
   const provider = new GoogleAuthProvider();
+  const gitProvider = new GithubAuthProvider()
 
   const [user, setUser] = useState('')
   const [loading, setLoading] = useState(true)
@@ -43,6 +45,12 @@ const Context = ({ children }) => {
     setLoading(true)
     return signInWithPopup(auth, provider);
   };
+
+
+  ///login with github ///
+  const githubLogin = ()=>{
+    return signInWithPopup(auth, gitProvider)
+  }
 
   ///sign out ////
   const logOut = ()=>{
@@ -69,7 +77,8 @@ const Context = ({ children }) => {
     user,
     logOut,
     loading,
-    setError
+    setError,
+    githubLogin
     
   };
 

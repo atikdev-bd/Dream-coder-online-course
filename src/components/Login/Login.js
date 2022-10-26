@@ -13,7 +13,7 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  const { loginUserWithEmailAndPassword, googleLogin } =
+  const { loginUserWithEmailAndPassword, githubLogin, googleLogin } =
     useContext(AuthContext);
   const { register, handleSubmit } = useForm();
 
@@ -41,6 +41,12 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  const handleGithub =()=>{
+     githubLogin().then(result =>{
+
+     }).catch(error => console.error(error))
+  }
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -101,7 +107,7 @@ const Login = () => {
                 <p className="px-4">continue with google</p>
               </div>
               <div
-                onClick={handleGoogleSignIn}
+                onClick={handleGithub}
                 className="flex justify-center items-center cursor-pointer border bg-gray-300 hover:bg-gray-400 rounded-full pl-4"
               >
                 <img className="w-12 " src={Github} alt="" />
