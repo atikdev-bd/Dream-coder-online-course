@@ -9,7 +9,6 @@ import "./Home.css";
 
 const Home = () => {
   const courses = useLoaderData();
-  console.log(courses);
 
   return (
     <div className="flex-row lg:flex-col-reverse">
@@ -28,7 +27,7 @@ const Home = () => {
           </div>
         </div>
         <div className="">
-          <h1 className="title text-center text-teal-600 font-bold text-4xl hover:text-teal-400">
+          <h1 className="title text-2xl text-center text-teal-600 font-bold lg:text-4xl hover:text-teal-400">
             Choose your course and achieve your dream..
           </h1>
         </div>

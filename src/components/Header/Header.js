@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 import ProfileIcon from "../../Assets/icon/profileIcon.png";
 import TitleIcon from '../../Assets/icon/icons8-programming-flag-50.png'
 import { AuthContext } from "../../context/Context";
@@ -12,19 +13,21 @@ const Header = () => {
 
   const userSignOut = () => {
     logOut()
-      .then((result) => {})
-      .catch((error) => console.error(error));
+      .then((result) => {
+        toast.success('Sign out successfully')
+      })
+      .catch((error) => toast.error(error.message));
   };
 
   const handleToggle = (e)=>{
     const value = e.target.checked
     setToggle(value)
-    console.log(value);
 
   }
   return (
     <div className="navbar bg-base-300 lg:px-8">
       <div className="flex-1">
+        <Toaster></Toaster>
         <img src={TitleIcon} alt="" />
         <Link className="lg:text-xl font-bold ml-2 hover:text-emerald-600">
          <span className="text-2xl lg:text-3xl text-orange-500">D</span>REAM COURSES
@@ -43,6 +46,9 @@ const Header = () => {
              <div className="hidden lg:block md:block">
              <Link className="mr-4 font-bold" to="home">
                 Courses
+              </Link>
+             <Link className="mr-4 font-bold" to="/">
+                FAQ
               </Link>
               <Link className="mr-4 font-bold" to="blogs">
                 Blogs

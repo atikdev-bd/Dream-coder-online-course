@@ -25,28 +25,28 @@ const Login = () => {
         console.log(result.user);
 
         navigate(from, { replace: true });
-        toast("login successfully!");
+        toast.success("Login Successfully!");
       })
       .catch((error) => {
         const err = error?.message;
         toast.error(err);
-        console.log(err);
       });
   };
   const handleGoogleSignIn = () => {
     googleLogin()
       .then((result) => {
         navigate(from, { replace: true });
-        toast.success("login successfully");
+        toast.success("Login Successfully");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error.message));
   };
 
   const handleGithub =()=>{
      githubLogin().then(result =>{
       navigate(from, { replace: true });
+      toast.success("Login Successfully");
 
-     }).catch(error => console.error(error))
+     }).catch(error => toast.error(error.message))
   }
   return (
     <div>

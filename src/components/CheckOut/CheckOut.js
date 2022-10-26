@@ -1,10 +1,15 @@
 import React from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 
 const CheckOut = () => {
   const singleInfo = useLoaderData();
   const { img, price, id, name } = singleInfo;
+
+  const handleEnroll =()=>{
+    toast.success('Enroll Successful')
+  }
   return (
     <div className="flex justify-center my-8 mx-4">
       <div className="card lg:w-[800px] bg-base-100 shadow-xl image-full">
@@ -19,8 +24,9 @@ const CheckOut = () => {
           <div className="card-actions flex justify-between">
             <div><h1 className="lg:text-4xl"> $ {price}</h1></div>
            <div>
-           <button className="btn btn-primary">Enroll</button>
+           <button onClick={handleEnroll} className="btn btn-primary">Enroll</button>
            </div>
+           <Toaster></Toaster>
           </div>
         </div>
       </div>
