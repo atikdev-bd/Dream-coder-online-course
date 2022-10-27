@@ -26,9 +26,9 @@ const Home = () => {
             <RightSideNav></RightSideNav>
           </div>
         </div>
-        <div className="">
+        <div className="mt-4">
           <h1 className="title text-2xl text-center text-teal-600 font-bold lg:text-4xl hover:text-teal-400">
-            Choose your course and achieve your dream..
+            Choose your course and achieve your dream !
           </h1>
         </div>
         <div className="courses-container grid grid-cols-1 md:grid-cols-2 mt-16 lg:grid-cols-3 gap-y-8 gap-x-6  mx-6 mb-24">

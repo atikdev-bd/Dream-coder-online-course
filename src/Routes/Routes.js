@@ -18,12 +18,12 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("http://localhost:4000/courses"),
+        loader: () => fetch("https://dream-courses-server-side.vercel.app/courses"),
         element: <LandPage></LandPage>,
       },
       {
         path: "/home",
-        loader: () => fetch("http://localhost:4000/courses"),
+        loader: () => fetch("https://dream-courses-server-side.vercel.app/courses"),
         element: <Home></Home>,
       },
       {
@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
         element: <CourseDetails></CourseDetails>,
         loader: ({ params }) => {
           const id = parseInt(params.id);
-          const data = fetch(`http://localhost:4000/course/${id}`);
+          const data = fetch(`https://dream-courses-server-side.vercel.app/course/${id}`);
           return data;
         },
       },
@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
         loader: ({ params }) => {
           const id = parseInt(params.id);
-          const data = fetch(`http://localhost:4000/check/${id}`);
+          const data = fetch(`https://dream-courses-server-side.vercel.app/check/${id}`);
           return data;
         },
         

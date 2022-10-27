@@ -10,22 +10,22 @@ const CourseDetails = () => {
   const { title, img, id, name, price } = details;
   return (
     <div className="course-container">
-      <div className="card lg:card-side bg-base-100 mx-8 my-4 shadow-xl">
+      <div className="card lg:card-side bg-base-100 mx-4 my-4 shadow-xl">
         <figure>
-          <img className="w-[800px] h-[500px]" src={img} alt="" />
+          <img className=" h-[300px] lg:w-[800px] lg:h-[500px]" src={img} alt="" />
         </figure>
-        <div className="card-body h-[500px] bg-slate-400">
+        <div className="card-body mt-0 h-[300px] lg:h-[500px] bg-slate-400">
           <h2 className="card-title">{name}</h2>
           <p className="overflow-auto">{title}</p>
           <div className="card-actions justify-between">
             <a href={CoursePDF}>
               {" "}
-              <div className="bg-gray-700 p-2 rounded-md hover:bg-green-700">
+              <div className="bg-gray-700 p-2 w-12 lg:w-full rounded-md hover:bg-green-700">
                 <img src={Pdf} alt="" />
               </div>
             </a>
             <Link to={`/check/${id}`}>
-              <button className="btn btn-primary">Get Premium Assess</button>
+              <button className="btn btn-primary   w-30 lg:w-full">Get Premium Access</button>
             </Link>
           </div>
         </div>
