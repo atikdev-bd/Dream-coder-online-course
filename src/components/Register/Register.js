@@ -134,14 +134,14 @@ const Register = () => {
               </p>
               <div
                 onClick={handleGoogleSignIn}
-                className="flex justify-center items-center cursor-pointer border bg-emerald-200 hover:bg-emerald-300 rounded-full pl-4"
+                className="flex justify-center items-center cursor-pointer border bg-emerald-200 hover:bg-emerald-300 rounded-full"
               >
                 <img className="w-12 " src={GoogleSvg} alt="" />
                 <p className="px-4">continue with google</p>
               </div>
               <div
                 onClick={handleGithub}
-                className="flex justify-center items-center cursor-pointer border bg-gray-300 hover:bg-gray-400 rounded-full pl-4"
+                className="flex justify-center items-center cursor-pointer border bg-gray-300 hover:bg-gray-400 rounded-full"
               >
                 <img className="w-12 " src={Github} alt="" />
                 <p className="px-4">continue with Github</p>

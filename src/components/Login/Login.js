@@ -71,6 +71,7 @@ const Login = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -83,6 +84,7 @@ const Login = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
+                  required
                 />
                 <label className="label">
                   <Link to="" className="label-text-alt link link-hover">
@@ -110,7 +112,7 @@ const Login = () => {
               </div>
               <div
                 onClick={handleGithub}
-                className="flex justify-center items-center cursor-pointer border bg-gray-300 hover:bg-gray-400 rounded-full pl-4"
+                className="flex justify-center items-center cursor-pointer border bg-gray-300 hover:bg-gray-400 rounded-full "
               >
                 <img className="w-12 " src={Github} alt="" />
                 <p className="px-4">continue with Github</p>
