@@ -7,7 +7,7 @@
 [Github Client side code link](https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-atikdev-bd.git)
 
 
-[Netlify live site link](https://dream-coder-app-5c1359.netlify.app/home)
+[Netlify live site link](https://dream-coder-app-5c1359.netlify.app/)
 
 ## Key specification:
 * used custom hooks for data loading.
