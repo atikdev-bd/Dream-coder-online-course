@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 import Laptop from "../../Assets/laptop.json";
 
 const Course = ({ info }) => {
-  const { id,img, name, price } = info;
+  const { id, img, name, price } = info;
   return (
     <div className="">
       <div className=" glass shadow-lg rounded-t-md">
         <figure>
-          <div className="bg-zinc-400 rounded-md">
-            <img className="w-full h-60 p-2  rounded-lg" src={img} alt="" />
+          <div className="bg-zinc-400  rounded-md">
+            <img className="w-full h-60 p-2   rounded-lg" src={img} alt="" />
           </div>
         </figure>
-        <div className="h-[150px] bg-stone-300 rounded-md">
+        <div className="h-[150px] bg-gradient-to-r from-cyan-900 bg-stone-300 rounded-md">
           <div className="">
             <div className="flex justify-between px-4">
               <div>
