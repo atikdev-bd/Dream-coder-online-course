@@ -9,6 +9,7 @@ import {
   signInWithPopup,
   signOut,
   updateCurrentUser,
+  updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 
@@ -57,6 +58,11 @@ const Context = ({ children }) => {
     setLoading(true)
     return signOut(auth)
   }
+
+  ///update profile ///
+  const userUpdateProfile =(profile)=>{
+     return updateProfile(auth.currentUser, profile)
+  }
   ///onAuthStateChanged with firebase///
   useEffect(()=>{
   const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
@@ -78,7 +84,8 @@ const Context = ({ children }) => {
     logOut,
     loading,
     setError,
-    githubLogin
+    githubLogin,
+    userUpdateProfile
     
   };
 

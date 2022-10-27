@@ -1,25 +1,32 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import Github from "../../Assets/svg/icons8-github.svg";
 import GoogleSvg from "../../Assets/svg/icons8-google.svg";
-import Github from '../../Assets/svg/icons8-github.svg'
 import { AuthContext } from "../../context/Context";
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const { createUserEmailAndPassword, googleLogin, githubLogin, loading } =
-    useContext(AuthContext);
+  const {
+    createUserEmailAndPassword,
+    googleLogin,
+    githubLogin,
+    userUpdateProfile,
+  } = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    const { email, name, password } = data;
+    const { email, name, photoURL, password } = data;
+    console.log(photoURL);
 
     createUserEmailAndPassword(email, password)
       .then((result) => {
         toast.success(" Login successfully ");
         navigate(from, { replace: true });
+
+        handleUpdateProfile(name, photoURL);
       })
       .catch((error) => toast.error(error));
   };
@@ -27,18 +34,30 @@ const Register = () => {
   const handleGoogleSignIn = () => {
     googleLogin()
       .then((result) => {
-        
         navigate(from, { replace: true });
       })
       .catch((error) => toast.error(error));
   };
-  const handleGithub =()=>{
-    githubLogin().then(result =>{
+  const handleGithub = () => {
+    githubLogin()
+      .then((result) => {
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
 
-      navigate(from, { replace: true });
+  const handleUpdateProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
 
-    }).catch(error => console.error(error))
- }
+    userUpdateProfile(profile)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {});
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -62,6 +81,7 @@ const Register = () => {
                   name="name"
                   placeholder="full name"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -69,9 +89,9 @@ const Register = () => {
                   <span className="label-text">Photo url</span>
                 </label>
                 <input
-                  {...register("photo url")}
+                  {...register("photoURL")}
                   type="text"
-                  name="Photo Url"
+                  name="photoURL"
                   placeholder="photo url"
                   className="input input-bordered"
                 />
@@ -86,6 +106,7 @@ const Register = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -98,6 +119,7 @@ const Register = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control mt-6">
@@ -116,7 +138,6 @@ const Register = () => {
               >
                 <img className="w-12 " src={GoogleSvg} alt="" />
                 <p className="px-4">continue with google</p>
-                
               </div>
               <div
                 onClick={handleGithub}
@@ -124,7 +145,6 @@ const Register = () => {
               >
                 <img className="w-12 " src={Github} alt="" />
                 <p className="px-4">continue with Github</p>
-                
               </div>
             </div>
           </form>
