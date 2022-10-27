@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Laptop from "../../Assets/laptop.json";
 
 const Course = ({ info }) => {
-  const { id, title, img, name, price } = info;
+  const { id,img, name, price } = info;
   return (
     <div className="">
       <div className=" glass shadow-lg rounded-t-md">

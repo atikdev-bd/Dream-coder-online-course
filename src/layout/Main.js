@@ -2,7 +2,6 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
-import RightSideNav from "../components/RightSideNav/RightSideNav";
 import "./Main.css";
 
 const Main = () => {
@@ -13,7 +12,7 @@ const Main = () => {
       <div className="row-container">
         <div>
           <Outlet></Outlet>
-        </div> 
+        </div>
       </div>
       <Footer></Footer>
     </>

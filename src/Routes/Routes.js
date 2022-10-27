@@ -14,16 +14,18 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement : <NotFoundPage></NotFoundPage>,
+    errorElement: <NotFoundPage></NotFoundPage>,
     children: [
       {
         path: "/",
-        loader: () => fetch("https://dream-courses-server-side.vercel.app/courses"),
+        loader: () =>
+          fetch("https://dream-courses-server-side.vercel.app/courses"),
         element: <LandPage></LandPage>,
       },
       {
         path: "/home",
-        loader: () => fetch("https://dream-courses-server-side.vercel.app/courses"),
+        loader: () =>
+          fetch("https://dream-courses-server-side.vercel.app/courses"),
         element: <Home></Home>,
       },
       {
@@ -39,24 +41,31 @@ export const router = createBrowserRouter([
         element: <CourseDetails></CourseDetails>,
         loader: ({ params }) => {
           const id = parseInt(params.id);
-          const data = fetch(`https://dream-courses-server-side.vercel.app/course/${id}`);
+          const data = fetch(
+            `https://dream-courses-server-side.vercel.app/course/${id}`
+          );
           return data;
         },
       },
       {
         path: "/check/:id",
-        element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <CheckOut></CheckOut>
+          </PrivateRoute>
+        ),
         loader: ({ params }) => {
           const id = parseInt(params.id);
-          const data = fetch(`https://dream-courses-server-side.vercel.app/check/${id}`);
+          const data = fetch(
+            `https://dream-courses-server-side.vercel.app/check/${id}`
+          );
           return data;
         },
-        
       },
       {
-        path : '/blogs',
-        element : <Blogs></Blogs>
-      }
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
     ],
   },
 ]);

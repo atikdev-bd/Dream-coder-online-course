@@ -1,11 +1,10 @@
 
-
 # Dream Coder projects !
 
-[Github server side code link](https://github.com/programming-hero-web-course2/b6-quiz-crackerz-atikdev-bd.git)
+[Github server side code link](https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-atikdev-bd.git)
 
 
-[Netlify live site link](https://quiz-camp-site.netlify.app/)
+[Netlify live site link](https://dream-coder-app-5c1359.netlify.app/home)
 
 ## Key specification:
 * used custom hooks for data loading.

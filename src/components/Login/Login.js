@@ -41,13 +41,14 @@ const Login = () => {
       .catch((error) => toast.error(error.message));
   };
 
-  const handleGithub =()=>{
-     githubLogin().then(result =>{
-      navigate(from, { replace: true });
-      toast.success("Login Successfully");
-
-     }).catch(error => toast.error(error.message))
-  }
+  const handleGithub = () => {
+    githubLogin()
+      .then((result) => {
+        navigate(from, { replace: true });
+        toast.success("Login Successfully");
+      })
+      .catch((error) => toast.error(error.message));
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">

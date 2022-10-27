@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
 const RightSideNav = () => {
   const [info, setInfo] = useState([]);
 
@@ -21,7 +20,6 @@ const RightSideNav = () => {
           <p className="mt-6" key={d.id}>
             <button className="border rounded-full px-4 py-1 bg-green-200 hover:bg-green-500">
               {d.name}{" "}
-             
             </button>
           </p>
         </Link>

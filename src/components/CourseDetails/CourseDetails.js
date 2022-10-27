@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Pdf from "../../Assets/icon/icons8-pdf-file-format-64.png";
-import CoursePDF from "../../Assets/Resume.pdf";
+import CoursePDF from "../../Assets/Approach_to_Programming_Language_Education.pdf";
 import RightSideNav from "../RightSideNav/RightSideNav";
 import "./CourseDetails.css";
 
 const CourseDetails = () => {
   const details = useLoaderData();
-  const { title, img, id, name, price } = details;
+  const { title, img, id, name,} = details;
   return (
     <div className="course-container">
       <div className="card lg:card-side bg-base-100 mx-4 my-4 shadow-xl">
