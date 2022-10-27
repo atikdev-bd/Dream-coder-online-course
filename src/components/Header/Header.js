@@ -72,12 +72,14 @@ const Header = () => {
             </div>
           ) : (
             <>
-              <Link className="mr-4 font-bold" to="home">
-                Courses
-              </Link>
-              <Link className="mr-4 font-bold" to="blogs">
-                Blogs
-              </Link>
+              <div className="hidden lg:block">
+                <Link className="mr-4 font-bold" to="home">
+                  Courses
+                </Link>
+                <Link className="mr-4 font-bold" to="blogs">
+                  Blogs
+                </Link>
+              </div>
               <div className="hidden lg:block">
                 <Link className="mr-4 font-bold" to="about">
                   FAQ
@@ -131,6 +133,12 @@ const Header = () => {
               ) : (
                 <>
                   {" "}
+                  <li>
+                    <Link to="blogs">Blogs</Link>
+                  </li>
+                  <li>
+                    <Link to="home">Courses</Link>
+                  </li>
                   <li>
                     <Link to="register">Register</Link>
                   </li>

@@ -31,7 +31,7 @@ const Home = () => {
             Choose your course and achieve your dream !
           </h1>
         </div>
-        <div className="courses-container grid grid-cols-1 md:grid-cols-2 mt-16 lg:grid-cols-3 gap-y-8 gap-x-6  mx-6 mb-24">
+        <div className="courses-container grid grid-cols-1 md:grid-cols-2 mt-16 lg:grid-cols-3 gap-y-8 gap-x-6  lg:mx-10 mx-4 mb-24">
           {courses.map((data) => (
             <Course key={data.id} info={data}></Course>
           ))}
