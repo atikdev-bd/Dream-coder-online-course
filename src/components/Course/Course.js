@@ -19,17 +19,16 @@ const Course = ({ info }) => {
           <div className="">
             <div className="flex justify-between px-4">
               <div>
-                <h2 className="card bg-green-200   mt-2  py-1 px-3  text-green-700">
+                <h2 className="card bg-green-200 hover:bg-teal-500 hover:text-slate-100  cursor-not-allowed mt-2  py-1 px-3  text-green-700">
                   {name}
                 </h2>
               </div>
               <div className="mt-4">
-                <Link
-                  to={`/course/${id}`}
-                  className=" px-4 py-1 bg-indigo-200 hover:bg-zinc-400 text-indigo-700  rounded-full"
-                >
-                  Details
-                </Link>
+                 <Link
+                  to={`/course/${id}`}>
+                  <button className=" glass py-1 px-3 rounded text-sky-800 font-semibold hover:bg-sky-200">Details</button>
+                </Link> 
+                
               </div>
               <div>
                 <p className=" text-green-700 text-xl font-bold  mt-2">

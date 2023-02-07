@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Github from "../../Assets/svg/icons8-github.svg";
 import GoogleSvg from "../../Assets/svg/icons8-google.svg";
 import { AuthContext } from "../../context/Context";
+
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
